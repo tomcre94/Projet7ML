@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  projet7:
+    image: projet7
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 5000:5000

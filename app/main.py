@@ -21,9 +21,11 @@ lemmatizer = WordNetLemmatizer()
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
-# Charger le modèle
-model_path = os.path.join(BASE_DIR, 'model_lstm_compatible.h5')
-model = tf.keras.models.load_model(model_path)
+# Chemin vers le modèle
+MODEL_PATH = './app/trained_model/model_lstm_compatible.h5'
+
+# Chargement du modèle
+model = tf.keras.models.load_model(MODEL_PATH)
 
 
 # Charger le tokenizer
