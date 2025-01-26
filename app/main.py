@@ -11,7 +11,6 @@ import subprocess
 import logging
 import nltk
 
-
 app = Flask(__name__)
 
 # Initialisation des outils NLTK
@@ -20,23 +19,19 @@ stemmer = PorterStemmer()
 lemmatizer = WordNetLemmatizer()
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-
 # Chemin vers le modèle
 MODEL_PATH = './app/trained_model/model_lstm_compatible.h5'
 
 # Chargement du modèle
 model = tf.keras.models.load_model(MODEL_PATH)
 
-
 # Charger le tokenizer
 tokenizer_path = os.path.join(BASE_DIR, 'tokenizer.pickle')
 with open(tokenizer_path, 'rb') as handle:
     tokenizer = pickle.load(handle)
 
-
 # Dictionnaire pour stocker la prédiction associée à un tweet
 prediction_cache = {}
-
 
 def clean_text(text):
     text = re.sub(r'http\S+|www\S+|https\S+', 'URL', text, flags=re.MULTILINE)
@@ -50,11 +45,9 @@ def clean_text(text):
     tokens = [lemmatizer.lemmatize(word) for word in tokens]
     return tokens
 
-
 @app.route('/')
 def home():
     return "API d'analyse de sentiments en ligne"
-
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -86,11 +79,9 @@ def predict():
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
-
 @app.route('/feedbackpositif', methods=['POST'])
 def feedbackpositif():
     return "true"
-
 
 @app.route('/feedbacknegatif', methods=['POST'])
 def feedbacknegatif():
@@ -100,8 +91,7 @@ def feedbacknegatif():
         file.write(f'{tweet_text}: {prediction_cache.get(tweet_text, "Non prédit")}\n')
     return jsonify({'status': 'Feedback enregistré'}), 200
 
-
-if __name__ != '__main__':
+if __name__ == '__main__':
     gunicorn_logger = logging.getLogger('gunicorn.error')
     app.logger.handlers = gunicorn_logger.handlers
     app.logger.setLevel(gunicorn_logger.level)
