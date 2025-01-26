@@ -8,4 +8,4 @@ RUN pip install --upgrade pip && \
 
 COPY . .
 EXPOSE 5000
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app.main:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app.main:app"]

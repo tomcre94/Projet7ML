@@ -105,12 +105,12 @@ if __name__ != '__main__':
     gunicorn_logger = logging.getLogger('gunicorn.error')
     app.logger.handlers = gunicorn_logger.handlers
     app.logger.setLevel(gunicorn_logger.level)
-    
+
     # Download required NLTK data
     nltk.download('punkt')
     nltk.download('stopwords')
     nltk.download('wordnet')
-    
+
     # Run the app
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 8080))
     app.run(host='0.0.0.0', port=port)
