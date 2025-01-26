@@ -5,6 +5,6 @@ services:
     image: projet7
     build:
       context: .
-      dockerfile: ./Dockerfile
+      dockerfile: ./app/Dockerfile
     ports:
       - 5000:5000
