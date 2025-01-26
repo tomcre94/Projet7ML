@@ -4,8 +4,8 @@ COPY app/requirements.txt .
 
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt && \
-    python -m nltk.downloader stopwords
+    python -m nltk.downloader stopwords punkt wordnet
 
 COPY . .
-EXPOSE 5000
+EXPOSE 8080
 CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app.main:app"]
