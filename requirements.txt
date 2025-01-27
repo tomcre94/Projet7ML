@@ -1,6 +1,6 @@
 transformers
 torch
-tensorflow
+tensorflow==2.18.0
 keras
 numpy
 nltk==3.6.5
