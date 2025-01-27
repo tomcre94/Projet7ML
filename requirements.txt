@@ -1,7 +1,5 @@
 transformers
 torch
-azure-identity
-azure-ai-ml
 tensorflow
 keras
 numpy
