@@ -21,7 +21,8 @@ nltk.download('averaged_perceptron_tagger')
 
 # Configuration
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODEL_PATH = './app/trained_model/model_lstm_compatible.h5'
+MODEL_PATH = 'model_lstm_compatible.h5'
+TOKENIZER_PATH = 'tokenizer.pickle'
 
 # Initialisation des outils de prétraitement
 stop_words = set(stopwords.words('english'))
@@ -33,7 +34,7 @@ tweet_tokenizer = TweetTokenizer(preserve_case=False, strip_handles=True, reduce
 model = tf.keras.models.load_model(MODEL_PATH)
 
 # Chargement du tokenizer
-with open(os.path.join(BASE_DIR, 'tokenizer.pickle'), 'rb') as handle:
+with open(TOKENIZER_PATH, 'rb') as handle:
     tokenizer = pickle.load(handle)
 
 # Cache pour les prédictions
