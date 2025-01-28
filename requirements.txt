@@ -1,7 +1,7 @@
 # Deep Learning Frameworks
 transformers==4.48.1
 torch==2.5.1
-tensorflow==2.15.0
+tensorflow
 keras==3.0.2
 
 # Data Processing
